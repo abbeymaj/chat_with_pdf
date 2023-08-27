@@ -10,6 +10,7 @@ from langchain.vectorstores import FAISS
 from langchain.llms import OpenAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.callbacks import get_openai_callback
+from src.logger import logging
 
 
 # Locating dotenv 
@@ -36,6 +37,7 @@ def main():
     st.header("Chat with your PDF File")
     
     # Upload a PDF File
+    logging.info("Uploading and reading the PDF File")
     pdf = st.file_uploader("Please upload your PDF File below.", type='pdf')
     
     # Read the PDF file and extract the text from the document
@@ -53,6 +55,7 @@ def main():
         chunks = text_splitter.split_text(text=text)
         
         # Defining the vector store name variable
+        logging.info("Creating the vector store")
         vec_store_name = pdf.name[:-4]
         
         # Checking if the vector store already exists and if yes reading the vector store
