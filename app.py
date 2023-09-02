@@ -14,6 +14,7 @@ from src.logger import logging
 load_dotenv(find_dotenv())
 
 # Creating a left rail for the web page
+logging.info("Creating a side bar for the application")
 with st.sidebar:
     # Creating a title for the left rail
     st.title("My LLM App")
@@ -37,6 +38,8 @@ def main():
     logging.info("Uploading the PDF File")
     pdf_obj = st.file_uploader("Please upload your PDF File below.", type='pdf')
     
+    # Reading the PDF file and creating a vector store
+    logging.info("Reading the PDF File and creating the vector store")
     if pdf_obj is not None:
         chunks = read_pdf(pdf_obj)
         vector_store = create_vector_store(pdf_obj=pdf_obj, chunks=chunks)
@@ -44,6 +47,7 @@ def main():
         # Allow the user to enter questions to query the PDF file
         question = st.text_input("Ask a question to your PDF File:")
         
+        # Enabling the system to provide a response
         if question:
             documents = vector_store.similarity_search(query=question, k=3)
             llm = OpenAI()
