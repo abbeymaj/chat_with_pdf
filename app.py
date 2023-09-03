@@ -13,6 +13,9 @@ from src.logger import logging
 # Locating dotenv 
 load_dotenv(find_dotenv())
 
+# Setting the configurations for the page to ensure it is wide
+st.set_page_config(page_title='PDF Chat', layout='wide')
+
 # Creating a left rail for the web page
 logging.info("Creating a side bar for the application")
 with st.sidebar:
