@@ -14,7 +14,7 @@ def clean_vector_store():
     # Removing and .pkl files that are older than 30 days
     try:
         # Defining the path
-        path = 'D:/Git/chat_with_pdf/vector_store'
+        path = 'vector_store'
         
         # List all files in the directory
         for f in os.listdir(path):
