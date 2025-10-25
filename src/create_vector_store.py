@@ -30,8 +30,9 @@ def create_vector_store(pdf_obj, chunks):
             vector_store = FAISS.from_texts(chunks, embedding=embeddings)
             with open(VECTOR_FILE_PATH, 'wb') as file_obj:
                 pickle.dump(vector_store, file_obj)
+        
+        return vector_store
+    
     except Exception as e:
         raise CustomException(e, sys)
-    
-    return vector_store
     

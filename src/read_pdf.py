@@ -33,7 +33,8 @@ def read_pdf(pdf):
                 length_function=len
             )
         chunks = text_splitter.split_text(text=text)
+        
+        return chunks
+    
     except Exception as e:
         raise CustomException(e, sys)
-        
-    return chunks
